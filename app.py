@@ -106,3 +106,24 @@ def put_resume_raw(payload: ResumeRawPayload) -> Dict[str, str]:
         raise HTTPException(status_code=400, detail="YAML 顶层必须是对象")
     RESUME_FILE.write_text(payload.yaml_text, encoding="utf-8")
     return {"message": "YAML 已保存"}
+
+
+if __name__ == "__main__":
+    import sys
+    import subprocess
+    import platform
+
+    host = "127.0.0.1"
+    port = 8010
+
+    if platform.system() == "Darwin":
+        url = f"http://{host}:{port}"
+        subprocess.Popen(["open", url], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    try:
+        import uvicorn
+    except ImportError:
+        print("uvicorn 未安装，请先运行: pip install -r requirements.txt", file=sys.stderr)
+        sys.exit(1)
+
+    uvicorn.run("app:app", host=host, port=port, reload=True)

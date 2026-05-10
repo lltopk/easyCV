@@ -18,31 +18,36 @@ http://localhost:8010/editor    ← 左侧 YAML 编辑 + 右侧实时预览
 ![导出 PDF](./png/pdf.png)
 
 ## Quick Start
-如果你是linux
+
+**macOS**（需要 Python 3.9+，没有先 `brew install python`）
+
 ```bash
 git clone https://github.com/lvy010/easyCV.git
 cd easyCV
-
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-uvicorn app:app --reload --host 0.0.0.0 --port 8010
+bash start.sh          # 自动建环境、装依赖、启动，并打开浏览器
 ```
 
-如果你是windows
+**Linux**
+
 ```bash
 git clone https://github.com/lvy010/easyCV.git
 cd easyCV
-
-python3 -m venv .venv
-$ source .venv/Scripts/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-
 uvicorn app:app --reload --host 0.0.0.0 --port 8010
 ```
 
-打开 [http://localhost:8010](http://localhost:8010) 即可。
+**Windows**
+
+```bash
+git clone https://github.com/lvy010/easyCV.git
+cd easyCV
+python3 -m venv .venv && .venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app:app --reload --host 0.0.0.0 --port 8010
+```
+
+启动后访问 [http://localhost:8010](http://localhost:8010)。
 
 ## How It Works
 
